@@ -10,7 +10,6 @@ from utils.anchor_decode import decode_bbox
 from utils.nms import single_class_non_max_suppression
 from load_model.pytorch_loader import load_pytorch_model, pytorch_inference
 
-# model = load_pytorch_model('models/face_mask_detection.pth');
 model = load_pytorch_model('models/model360.pth');
 # anchor configuration
 #feature_map_sizes = [[33, 33], [17, 17], [9, 9], [5, 5], [3, 3]]
@@ -127,7 +126,7 @@ import json
 from tqdm import tqdm
 
 
-FOLDER_PATH = '/media/hieunm/HDD_Data/Experiment/AICrowd/maskd'
+FOLDER_PATH = './AICrowd/maskd/dataset'
 TEST_FOLDER = os.path.join(FOLDER_PATH, 'test_images')
 
 with open(FOLDER_PATH + '/test.json') as json_file:
@@ -203,7 +202,7 @@ for filename in tqdm(files, total=len(files)):
               draw_result=False,
               show_result=False)
 
-    is_show_box = True
+    is_show_box = False
     res = post_process(filename, dets, img, is_show_box=is_show_box)
     list_result.extend(res)
 
